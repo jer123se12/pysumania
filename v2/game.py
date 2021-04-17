@@ -73,6 +73,7 @@ def light(screen, p, k, l, y, r):
 
 def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
     # files & song
+    pygame.init()
     font = pygame.font.SysFont("DelaGothicOne-Regular.ttf", 48)
     judgetext = [
         font.render("EXCELLENT", True, (255, 255, 255)),
@@ -115,7 +116,6 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
         keys.pop(-1)
     print(keys)
     # pygame & music
-    pygame.init()
     screen = pygame.display.set_mode((wid, hei))
     pygame.mixer.init()
     pygame.mixer.music.load(path + music(path + finm))
@@ -139,6 +139,7 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
         if played and elp > 0:
             played = False
             pygame.mixer.music.play()
+            starttime=
 
         # scrolling
         for lane in range(0, amoke):
@@ -244,7 +245,12 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
         )
         # funcs
         light(screen, pressed, keys, lanes, juy, rad)
-        # update
+        # update& fadein
+        if elp <-2500:
+            fadein = pygame.Surface((wid,hei))
+            fadein.set_alpha(225-((elp+2900)*0.45))
+            fadein.fill((0, 0, 0))
+            screen.blit(fadein,(0,0))
         pygame.display.flip()
     pygame.quit()
 
@@ -255,20 +261,12 @@ if __name__ == "__main__":
         550,
         800,
         600,
-        "Kikuo - Gangu Kyou Sou Kyoku -Shuuen- (Lirai) [7K WORLD'S END].osu",
+        "Kikuo - Gangu Kyou Sou Kyoku -Shuuen- (Lirai) [4K EXPERT].osu",
         "./",
         [K_a, K_s, K_d, K_SPACE, K_j, K_k, K_l],
         0,
-        [(100, 100, 100), (100, 210, 225), (243, 243, 243)],
+        [(245, 93, 62),#Orange Soda
+        (135, 142, 136),#Battleship Grey
+        (247, 203, 21)],
     )
-rungame(
-    0,
-    550,
-    800,
-    600,
-    "Kikuo - Gangu Kyou Sou Kyoku -Shuuen- (Lirai) [4K EXPERT].osu",
-    "./",
-    [K_a, K_s, K_d, K_SPACE, K_j, K_k, K_l],
-    0,
-    [(100, 100, 100), (100, 210, 225), (243, 243, 243)],
-)
+
