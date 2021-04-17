@@ -134,7 +134,10 @@ def rungame(w, h, s, c, o, scr,skin,n, n2):
                 bg = line.split(",")[2][1:-1]
             except:
                 pass
-            if bg:
+            try:
+                if bg:
+                    pass
+            except:
                 break
         if "TimingPoints" in line:
             yes = False

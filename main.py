@@ -435,6 +435,7 @@ def songselect(width, height):
 
         pygame.display.flip()
     pygame.QUIT()
+    exit()
 
 
 songselect(800, 600)
