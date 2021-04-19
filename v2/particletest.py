@@ -51,13 +51,15 @@ while running:
     for e in events:
         if e.type == pygame.QUIT:
             running = False
-        if e.type == pygame.KEYDOWN:
-            print('yea')
-            for count in range(20):
+        if e.type == pygame.MOUSEBUTTONDOWN:
+            for count in range(100):
                 rx=10*((random.random())-0.5)
-                ry=10*((random.random())-0.5)
-                p.append([nowtime,x,y,rx,ry,0.5,20*random.random()])
-    
+                ry=10*((random.random())-1)
+                p.append([nowtime,x,y,rx,ry,1,10*random.random()])
+#     for count in range(20):
+#         rx=20*((random.random())-0.5)
+#         ry=20*((random.random())-0.5)
+#         p.append([nowtime,x,y,rx,ry,0.5,10*random.random()])
 #     p.append([nowtime,
 #                  x,
 #                  y,
@@ -65,5 +67,5 @@ while running:
 #                  ry,
 #                  0.5,
 #               20*random.random()])
-    p=update_particle(screen,p,5,nowtime,(255,255,255),0.2,True,True)
+    p=update_particle(screen,p,5,nowtime,(255,255,255),0.05,True,True)
     pygame.display.flip()

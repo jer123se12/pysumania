@@ -76,8 +76,8 @@ def light(screen, p, k, l, y, r,s):
 def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
     # files & song
     pygame.init()
-    hitsound=pygame.mixer.Sound('hit.wav')
-    hitsound.set_volume(0.3)
+    #hitsound=pygame.mixer.Sound('hit.wav')
+    #hitsound.set_volume(0.3)
     font = pygame.font.SysFont("DelaGothicOne-Regular.ttf", 48)
     judgetext = [
         font.render("EXCELLENT", True, (255, 255, 255)),
@@ -90,7 +90,7 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
     amoke = amtofkeys(path + finm)
     wid = scw
     hei = sch
-    rad = 25
+    rad = (25/600)*hei
     judge = [22, 40, 90, 130, 180, 200]
     song, hold = get_song(amoke, path + finm)
     lanes = []
@@ -218,7 +218,7 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
                 kys = event.key
                 for key in range(0, amoke):
                     if kys == keys[key]:
-                        pygame.mixer.Channel(key).play(hitsound)
+                        #pygame.mixer.Channel(key).play(hitsound)
                         for jud in range(0, len(judge)):
                             if elp - judge[jud] < song[key][0] < elp + judge[jud]:
                                 scores.append([jud, elp - song[key][0]])
@@ -256,7 +256,7 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
             screen, (255, 200, 200), pygame.Rect(x, (hei / 2) + 100, 2, 10)
         )
         # funcs
-        light(screen, pressed, keys, lanes, juy, rad,hitsound)
+        light(screen, pressed, keys, lanes, juy, rad,'')
         # update& fadein
         if elp <-2500:
             fadein = pygame.Surface((wid,hei))
@@ -264,7 +264,7 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
             fadein.fill((0, 0, 0))
             screen.blit(fadein,(0,0))
         pygame.display.flip()
-    pygame.quit()
+
 
 
 if __name__ == "__main__":
