@@ -61,10 +61,12 @@ def music(fn):
             return line.split(":")[1].strip()
 
 
-def light(screen, p, k, l, y, r):
+def light(screen, p, k, l, y, r,s):
+    
     count = 0
     for a in k:
         if p[a]:
+            
             pygame.draw.circle(screen, (230, 230, 230), (l[count], y), r)
         else:
             pygame.draw.circle(screen, (230, 230, 230), (l[count], y), r, width=5)
@@ -74,6 +76,8 @@ def light(screen, p, k, l, y, r):
 def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
     # files & song
     pygame.init()
+    hitsound=pygame.mixer.Sound('hit.wav')
+    hitsound.set_volume(0.3)
     font = pygame.font.SysFont("DelaGothicOne-Regular.ttf", 48)
     judgetext = [
         font.render("EXCELLENT", True, (255, 255, 255)),
@@ -135,11 +139,18 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
         # get current stuff
         elp = (time.time() * 1000) - startime
         pressed = pygame.key.get_pressed()
-        # play music
+        # play music & end
         if played and elp > 0:
             played = False
             pygame.mixer.music.play()
-            starttime=
+            starttime=0-elp
+        end=False
+        for a in range(0,amoke):
+            end=True if len(song[a])==1 else False
+            end=True if len(hold[a])==1 else False
+        if end:
+            
+            running=False
 
         # scrolling
         for lane in range(0, amoke):
@@ -207,6 +218,7 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
                 kys = event.key
                 for key in range(0, amoke):
                     if kys == keys[key]:
+                        pygame.mixer.Channel(key).play(hitsound)
                         for jud in range(0, len(judge)):
                             if elp - judge[jud] < song[key][0] < elp + judge[jud]:
                                 scores.append([jud, elp - song[key][0]])
@@ -244,7 +256,7 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
             screen, (255, 200, 200), pygame.Rect(x, (hei / 2) + 100, 2, 10)
         )
         # funcs
-        light(screen, pressed, keys, lanes, juy, rad)
+        light(screen, pressed, keys, lanes, juy, rad,hitsound)
         # update& fadein
         if elp <-2500:
             fadein = pygame.Surface((wid,hei))
