@@ -51,15 +51,15 @@ while running:
     for e in events:
         if e.type == pygame.QUIT:
             running = False
-        if e.type == pygame.MOUSEBUTTONDOWN:
+        if e.type == pygame.MOUSEBUTTONDOWN or e.type== pygame.KEYDOWN:
             for count in range(100):
                 rx=10*((random.random())-0.5)
-                ry=10*((random.random())-1)
-                p.append([nowtime,x,y,rx,ry,1,10*random.random()])
-#     for count in range(20):
-#         rx=20*((random.random())-0.5)
-#         ry=20*((random.random())-0.5)
-#         p.append([nowtime,x,y,rx,ry,0.5,10*random.random()])
+                ry=20*((random.random())-1)
+                p.append([nowtime,x,y,rx,ry,1,5*random.random()])
+    
+    rx=0
+    ry=0
+    p.append([nowtime,wid*random.random(),hei*random.random(),rx,ry,0.5,10*random.random()])
 #     p.append([nowtime,
 #                  x,
 #                  y,

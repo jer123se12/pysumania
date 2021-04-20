@@ -83,10 +83,10 @@ def offset(x,y,x2,y2,m):
     normaly=y-(y2/2)
     return (((normalx/x2)*(-1*m))-m,((normaly/y2)*(-1*m))-m)
 def button(screen,x,y,width,height,text,color,multi,fontname,fontcolor,moupos,event,fun):
-    if (moupos[0]>x-multi and moupos[0]<(x+width)+multi) and (moupos[1]>y-multi and moupos[1]<(y+height)+multi):
-        pygame.draw.rect(screen,fontcolor,(x-multi,y-multi,width+(2*multi),height+(2*multi)))
-        pygame.draw.rect(screen,color,(x-multi,y-multi,width+(2*multi),height+(2*multi)),width=5)
-        t=pygame.font.SysFont(fontname, int((height/1.5)+(multi/2))).render(text,True,color)
+    if (moupos[0]>x and moupos[0]<(x+width)) and (moupos[1]>y and moupos[1]<(y+height)):
+        pygame.draw.rect(screen,fontcolor,(x-multi,y,width+(2*multi),height))
+        pygame.draw.rect(screen,color,(x-multi,y,width+(2*multi),height),width=5)
+        t=pygame.font.SysFont(fontname, int((height/1.2))).render(text,True,color)
         text_rect = t.get_rect(midright=(x+(width), y+(height/2)))
         screen.blit(t,text_rect)
         for e in event:
@@ -143,8 +143,8 @@ def selectsong(wid,hei):
     mousev=0
     cur=0
     while running:
-        x=(wid/2)+20
-        y=hei/2
+        x=(wid/2)+100
+        y=(hei/2)+10
         screen.fill(colors[1])
         clock.tick(60)
         elp=time.time()-st
@@ -203,8 +203,8 @@ def selectsong(wid,hei):
         for l in range(0,len(scr)):
             y2=(l*40)+(curentindex*40)
             if y2<hei and y2>-30:
-                button(screen,wid/2,y2,(wid/2)-10,25,scr[l],colors[1],5,'DelaGothicOne-Regular.ttf',colors[4],(x,y),events,pri)
-                if cur!=l and button(screen,wid/2,y2,(wid/2)-10,25,scr[l],colors[1],5,'DelaGothicOne-Regular.ttf',colors[4],(x,y),events,pri):
+                button(screen,wid/2,y2,(wid/2)-10,25,scr[l],colors[1],50,'DelaGothicOne-Regular.ttf',colors[4],(x,y),events,pri)
+                if cur!=l and button(screen,wid/2,y2,(wid/2)-10,25,scr[l],colors[1],50,'DelaGothicOne-Regular.ttf',colors[4],(x,y),events,pri):
                     
                     cur=l
                     if index>-1:

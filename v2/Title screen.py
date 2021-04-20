@@ -82,10 +82,10 @@ def title(wid,hei):
         bh=(100/600)*hei
         p.append([elp,
                      (wid*(random.random())),(hei*(random.random())),
-                     5*((random.random())-0.5),
-                     5*(random.random()-0.5),
-                     0.0,
-                  10*random.random()])
+                     0,
+                     0,
+                     0.1,
+                  20*random.random()])
         p=update_particle(screen,p,5,elp,colors[4],0.1,True,True)
         button(screen,((wid/2)-(bw/2)),((hei/3))+(parallex[1]*0.5),bw,bh,'Mania',colors[3],20,'DelaGothicOne-Regular.ttf',colors[1],(x,y),events,songslect)
         button(screen,((wid/2)-(bw/2)),((hei/3)*2)+(parallex[1]*0.5),bw,bh,'Options',colors[3],20,'DelaGothicOne-Regular.ttf',colors[1],(x,y),events,options)
