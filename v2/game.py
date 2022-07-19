@@ -137,7 +137,10 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
         lg.fill((0, 0, 0))
         screen.blit(lg, ((wid - ((lanes[-1] - lanes[1]) + (4 * rad))) / 2, 0))
         # get current stuff
-        elp = (time.time() * 1000) - startime
+        if not played:
+            elp = pygame.mixer.music.get_pos() 
+        else:
+            elp=( time.time()*1000)-startime
         pressed = pygame.key.get_pressed()
         # play music & end
         if played and elp > 0:
@@ -146,7 +149,6 @@ def rungame(offset, scroll, scw, sch, finm, path, keys, s, colors):
             starttime=0-elp
         end=False
         for a in range(0,amoke):
-            end=True if len(song[a])==1 else False
             end=True if len(hold[a])==1 else False
         if end:
             

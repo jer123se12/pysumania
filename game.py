@@ -400,7 +400,7 @@ def rungame(w, h, s, c, o, scr,skin,n, n2):
             screen.blit(background_image, [0, 0])
         except:
             screen.fill((0, 0, 0))
-        timepassed = (time.time() * 1000) - starttime
+        timepassed = pygame.mixer.music.get_pos()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
