@@ -5,3 +5,6 @@
 2. rename the extention of your beatmap  (.osu file) to a .zip file. E.g: song.osu --> song.zip
 3. extract and place folder into songs directory
 4. run main.py
+# Problems
+only accept 4k and 7k maps\
+not everything is working
