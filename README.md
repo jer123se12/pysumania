@@ -1,4 +1,4 @@
-# pysu
+# pysumania
  osu mania but scuffed
 # Instructions
 1. create a folder named songs in the root directory
