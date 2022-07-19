@@ -108,5 +108,3 @@ def rescreen(screen_width, screen_height, timeings, score, percent):
                 i += 1
         pygame.display.flip()
 
-
-rescreen(800, 600, [0, 0, 0], [0, 0, 0, 0], 80)
